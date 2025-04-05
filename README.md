@@ -1,0 +1,1 @@
+Wrzuć tu diagramki
