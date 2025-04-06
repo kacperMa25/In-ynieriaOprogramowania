@@ -1,0 +1,45 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="Strona-1" id="3WZIA3cmAWLJgJ1YO3PF">
+    <mxGraphModel dx="963" dy="1277" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="70Rhv-fLxmXgu2d01HeU-1" target="70Rhv-fLxmXgu2d01HeU-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-1" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Operator magazynu&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="410" width="140" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-2" value="System:&lt;br&gt;Operacje magazynowe" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=90;height=80;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="440" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-3" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Rejestracja przyjęć i wydań towaru&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="249" y="23" width="330" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-4" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Rejestracja wydań towaru&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="710" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-5" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Rejestracja przyjęć towaru&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="532" width="170" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-6" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Skanowanie kodów produktów&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="310" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-8" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/font&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="70Rhv-fLxmXgu2d01HeU-6" target="70Rhv-fLxmXgu2d01HeU-5">
+          <mxGeometry x="-0.0102" width="160" relative="1" as="geometry">
+            <mxPoint x="410" y="560" as="sourcePoint" />
+            <mxPoint x="570" y="560" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="70Rhv-fLxmXgu2d01HeU-9" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/font&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="70Rhv-fLxmXgu2d01HeU-6" target="70Rhv-fLxmXgu2d01HeU-4">
+          <mxGeometry x="-0.0036" width="160" relative="1" as="geometry">
+            <mxPoint x="528" y="419" as="sourcePoint" />
+            <mxPoint x="478" y="527" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

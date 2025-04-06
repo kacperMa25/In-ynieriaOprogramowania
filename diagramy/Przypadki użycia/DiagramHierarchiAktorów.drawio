@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Safari/605.1.15" version="26.2.8">
+  <diagram name="Strona-1" id="bAC5uqIM3cbNcpsP6RJR">
+    <mxGraphModel dx="1846" dy="1230" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t3or6yXfqoIslkZLMpmE-1" value="Pracownik" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="369" y="475" width="90" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-2" value="Administrator systemu" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="130" width="60" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-3" value="Pracownik obsługi klienta" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="840" width="60" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-4" value="Operator magazynu" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="130" width="60" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-22" value="Kierownik działu logistyki" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="840" width="60" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-26" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="t3or6yXfqoIslkZLMpmE-1" target="t3or6yXfqoIslkZLMpmE-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="340" y="590" as="sourcePoint" />
+            <mxPoint x="230" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="565" />
+              <mxPoint x="120" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-27" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="t3or6yXfqoIslkZLMpmE-1" target="t3or6yXfqoIslkZLMpmE-3">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="360" y="575" as="sourcePoint" />
+            <mxPoint x="280" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="720" y="590" />
+              <mxPoint x="720" y="935" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-28" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="t3or6yXfqoIslkZLMpmE-1" target="t3or6yXfqoIslkZLMpmE-22">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="370" y="585" as="sourcePoint" />
+            <mxPoint x="290" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="590" />
+              <mxPoint x="120" y="935" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t3or6yXfqoIslkZLMpmE-30" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="t3or6yXfqoIslkZLMpmE-1" target="t3or6yXfqoIslkZLMpmE-4">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="650" y="525" as="sourcePoint" />
+            <mxPoint x="570" y="220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="720" y="565" />
+              <mxPoint x="720" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
