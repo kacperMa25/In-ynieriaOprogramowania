@@ -1,2 +1,3 @@
 *.drawio.bkp
 .DS_Store
+*.pyc
