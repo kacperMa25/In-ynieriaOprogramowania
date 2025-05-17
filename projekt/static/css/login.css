@@ -9,11 +9,10 @@ body {
 .container {
     display: flex;
     width: 100%;
-    min-height: 100vh; /* Ensure container is at least viewport height */
+    min-height: 100vh;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    /* overflow: hidden; Removed to allow scrolling */
-    position: sticky; /* Make the container sticky */
-    top: 0; /* Stick to the top of the viewport */
+    position: sticky; 
+    top: 0; 
 }
 
 .left-panel {
