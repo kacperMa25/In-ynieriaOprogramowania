@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block head %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/login.css') }}"
+/>
+{% endblock %} {% block body %}
+<div class="container">
+    <div class="left-panel">
+        <div class="header">
+            <img class="logo" src="../static/css/Logo.svg" />
+        </div>
+        <form class="login-section" method="post">
+            <h2>Zaloguj się</h2>
+            <p>Podaj swój login oraz hasło, aby rozpocząć</p>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button class="login-button" type="submit">Rozpocznij</button>
+        </form>
+        {% for message in get_flashed_messages()%}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        <div class="footer">
+            <p>Kacpry Inc.</p>
+        </div>
+    </div>
+    <div class="right-panel"></div>
+</div>
+{% endblock %}

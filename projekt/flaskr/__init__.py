@@ -21,9 +21,15 @@ def create_app(test_config=None):
 
     @app.route('/')
     def login():
-        return render_template('login.html')
-    
+        return "Przejdz do podstrony auth/login"
+
     from . import db
     db.init_app(app)
-    
+
+    from . import auth
+    app.register_blueprint(auth.bp)
+
+    from . import dashboard
+    app.register_blueprint(dashboard.bp)
+
     return app

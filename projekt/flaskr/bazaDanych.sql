@@ -7,6 +7,7 @@ CREATE TABLE employees (
     lastName TEXT NOT NULL,
     firstName TEXT NOT NULL,
     login TEXT NOT NULL,
+    password TEXT NOT NULL,
     reportsTo INTEGER,
     jobTitle TEXT NOT NULL,
     FOREIGN KEY (reportsTo) REFERENCES employees (employeeCode)
@@ -25,6 +26,6 @@ CREATE TABLE products (
 );
 
 INSERT INTO
-    employees (lastName, firstName, login, jobTitle)
+    employees (lastName, firstName, login, password, jobTitle)
 VALUES
-    ("admin", "admin", "admin", "admin");
+    ("admin", "admin", "admin", "admin", "admin");
