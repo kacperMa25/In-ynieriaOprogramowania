@@ -1,7 +1,10 @@
 {% extends 'base.html'%} {% block head %} {% endblock %} {% block body %}
 <header></header>
 
-<div>usersPane</div>
+<div>
+    <h1>usersPane</h1>
+    <h2><a href="{{ url_for('dashboard.productsPane') }}">Panel produktów</a></h2>
+</div>
 
 <footer></footer>
 {%endblock %}

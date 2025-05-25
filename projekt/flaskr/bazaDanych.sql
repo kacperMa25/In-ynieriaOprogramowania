@@ -24,8 +24,3 @@ CREATE TABLE products (
     buyPrice DECIMAL(10, 2) NOT NULL,
     MSRP DECIMAL(10, 2) NOT NULL
 );
-
-INSERT INTO
-    employees (lastName, firstName, login, password, jobTitle)
-VALUES
-    ("admin", "admin", "admin", "admin", "admin");
