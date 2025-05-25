@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - System Zarządzania Magazynem</title>
+    <link rel="stylesheet" href="index.css">
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>Panel sterowania</h1>
+                </div>
+                <div class="header-right">
+                    <div class="system-badge">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M1 3h15v2H1zM6 7h15v2H6zM1 11h15v2H1zM6 15h15v2H6zM1 19h15v2H1z"></path>
+                        </svg>
+                        <span>ISZM</span>
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <div class="user-avatar">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #5D6B8A;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <button style="background: none; border: none; color: white; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="19" cy="12" r="1"></circle>
+                            <circle cx="5" cy="12" r="1"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tabs">
+                <a href="index.html" class="tab active">Dashboard</a>
+                <a href="products.html" class="tab">Przedmioty</a>
+                <a href="users.html" class="tab">Użytkownicy</a>
+                <a href="#" class="tab">Raporty</a>
+            </div>
+
+            <div class="page-title">
+                <h2>Dashboard</h2>
+                <p>Przegląd stanu magazynu i aktywności systemu</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Całkowita liczba przedmiotów</div>
+                    <div class="stat-value">1,248</div>
+                    <div class="stat-description">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #10B981;">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>
+                        <span class="stat-up">+8.2% w tym miesiącu</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Wartość magazynu</div>
+                    <div class="stat-value">458,623 zł</div>
+                    <div class="stat-description">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #10B981;">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>
+                        <span class="stat-up">+12.5% w tym miesiącu</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Aktywni użytkownicy</div>
+                    <div class="stat-value">20</div>
+                    <div class="stat-description">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #EF4444;">
+                            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                            <polyline points="17 18 23 18 23 12"></polyline>
+                        </svg>
+                        <span class="stat-down">-2 w tym tygodniu</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Niski stan magazynowy</div>
+                    <div class="stat-value">24</div>
+                    <div class="stat-description">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #EF4444;">
+                            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                            <polyline points="17 18 23 18 23 12"></polyline>
+                        </svg>
+                        <span class="stat-down">+5 w tym tygodniu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                                Ostatnia aktywność
+                            </h3>
+                            <a href="#" class="button button-outline button-sm">Zobacz wszystko</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Operacja</th>
+                                            <th>Przedmiot</th>
+                                            <th>Użytkownik</th>
+                                            <th>Ilość</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2023-05-18 14:32</td>
+                                            <td><span class="badge badge-green">Przyjęcie</span></td>
+                                            <td>Wkrętarka akumulatorowa DeWalt</td>
+                                            <td>Jan Kowalski</td>
+                                            <td>+10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-05-18 11:15</td>
+                                            <td><span class="badge badge-red">Wydanie</span></td>
+                                            <td>Młot udarowy Makita</td>
+                                            <td>Anna Nowak</td>
+                                            <td>-2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-05-17 16:45</td>
+                                            <td><span class="badge badge-amber">Inwentaryzacja</span></td>
+                                            <td>Zestaw kluczy nasadowych</td>
+                                            <td>Piotr Wiśniewski</td>
+                                            <td>+3</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Szybkie akcje</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="quick-actions">
+                                <a href="add-item.html" class="action-card">
+                                    <div class="action-icon">
+                                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m0 0h-4"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="action-title">Dodaj przedmiot</div>
+                                    <div class="action-description">Dodaj nowy przedmiot do magazynu</div>
+                                </a>
+                                <a href="add-user.html" class="action-card">
+                                    <div class="action-icon">
+                                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                                            <circle cx="8.5" cy="7" r="4"></circle>
+                                            <line x1="20" y1="8" x2="20" y2="14"></line>
+                                            <line x1="23" y1="11" x2="17" y2="11"></line>
+                                        </svg>
+                                    </div>
+                                    <div class="action-title">Dodaj użytkownika</div>
+                                    <div class="action-description">Utwórz nowe konto użytkownika</div>
+                                </a>
+                                <a href="edit-item.html" class="action-card">
+                                    <div class="action-icon">
+                                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="action-title">Edytuj przedmiot</div>
+                                    <div class="action-description">Zaktualizuj dane przedmiotu</div>
+                                </a>
+                                <a href="#" class="action-card">
+                                    <div class="action-icon">
+                                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                                            <polyline points="17 8 12 3 7 8"></polyline>
+                                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                                        </svg>
+                                    </div>
+                                    <div class="action-title">Przyjmij dostawę</div>
+                                    <div class="action-description">Zarejestruj nową dostawę</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>Pomoc techniczna: 792 292 975</div>
+                <div>Kacpry Inc.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
