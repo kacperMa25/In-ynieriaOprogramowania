@@ -9,7 +9,7 @@ CREATE TABLE employees (
     login TEXT NOT NULL,
     password TEXT NOT NULL,
     reportsTo INTEGER,
-    jobTitle TEXT NOT NULL,
+    jobTitle TEXT,
     FOREIGN KEY (reportsTo) REFERENCES employees (employeeCode)
 );
 
