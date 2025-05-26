@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj użytkownika - System Zarządzania Magazynem</title>
+    <link rel="stylesheet" href="add-user.css">
+
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="index.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                        </svg>
+                        <h1>Panel sterowania</h1>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <div class="system-badge">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M1 3h15v2H1zM6 7h15v2H6zM1 11h15v2H1zM6 15h15v2H6zM1 19h15v2H1z"></path>
+                        </svg>
+                        <span>ISZM</span>
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <div class="user-avatar">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #5D6B8A;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <button style="background: none; border: none; color: white; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="19" cy="12" r="1"></circle>
+                            <circle cx="5" cy="12" r="1"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Tabs -->
+            <div class="tabs">
+                <a href="index.html" class="tab">Dashboard</a>
+                <a href="add-item.html" class="tab">Przedmioty</a>
+                <a href="add-user.html" class="tab active">Użytkownicy</a>
+                <a href="#" class="tab">Raporty</a>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-title">
+                <h2>Dodaj użytkownika</h2>
+                <p>Wypełnij formularz, aby dodać nowego użytkownika do systemu zarządzania magazynem</p>
+            </div>
+
+            <!-- Form Grid -->
+            <div class="grid">
+                <!-- User Data Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Dane użytkownika</h3>
+                        <p class="card-description">Wprowadź podstawowe informacje o użytkowniku</p>
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="form-group">
+                                <div class="form-grid form-grid-2">
+                                    <div>
+                                        <label class="form-label" for="firstName">Imię</label>
+                                        <input class="form-input" id="firstName" type="text" placeholder="Jan">
+                                    </div>
+                                    <div>
+                                        <label class="form-label" for="lastName">Nazwisko</label>
+                                        <input class="form-input" id="lastName" type="text" placeholder="Kowalski">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-input" id="email" type="email" placeholder="jan.kowalski@firma.pl">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-grid form-grid-2">
+                                    <div>
+                                        <label class="form-label" for="password">Hasło</label>
+                                        <input class="form-input" id="password" type="password">
+                                    </div>
+                                    <div>
+                                        <label class="form-label" for="confirmPassword">Potwierdź hasło</label>
+                                        <input class="form-input" id="confirmPassword" type="password">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-grid form-grid-2">
+                                    <div>
+                                        <label class="form-label" for="phone">Telefon</label>
+                                        <input class="form-input" id="phone" type="tel" placeholder="+48 123 456 789">
+                                    </div>
+                                    <div>
+                                        <label class="form-label" for="position">Stanowisko</label>
+                                        <input class="form-input" id="position" type="text" placeholder="Magazynier">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div>
+                    <!-- Permissions Card -->
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <div class="card-header">
+                            <h3 class="card-title">Uprawnienia</h3>
+                            <p class="card-description">Określ poziom dostępu użytkownika</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label class="form-label" for="role">Rola w systemie</label>
+                                <select class="form-select" id="role">
+                                    <option value="" selected disabled>Wybierz rolę</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="manager">Kierownik</option>
+                                    <option value="operator">Operator</option>
+                                    <option value="viewer">Przeglądający</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <div class="checkbox-group">
+                                    <input class="checkbox-input" type="checkbox" id="inventory">
+                                    <label for="inventory">Zarządzanie inwentarzem</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input class="checkbox-input" type="checkbox" id="orders">
+                                    <label for="orders">Zarządzanie zamówieniami</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input class="checkbox-input" type="checkbox" id="reports">
+                                    <label for="reports">Dostęp do raportów</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input class="checkbox-input" type="checkbox" id="users">
+                                    <label for="users">Zarządzanie użytkownikami</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input class="checkbox-input" type="checkbox" id="settings">
+                                    <label for="settings">Ustawienia systemu</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Status Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Status konta</h3>
+                            <p class="card-description">Ustaw status konta użytkownika</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="checkbox-group">
+                                <input class="checkbox-input" type="checkbox" id="active" checked>
+                                <label for="active">Konto aktywne</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input class="checkbox-input" type="checkbox" id="emailVerification">
+                                <label for="emailVerification">Wymagaj weryfikacji email</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input class="checkbox-input" type="checkbox" id="passwordChange">
+                                <label for="passwordChange">Wymagaj zmiany hasła przy pierwszym logowaniu</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-group">
+                <a href="users.html" class="button button-outline">Anuluj</a>
+                <button class="button button-primary">Zapisz użytkownika</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>Pomoc techniczna: 792 292 975</div>
+                <div>Kacpry Inc.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
