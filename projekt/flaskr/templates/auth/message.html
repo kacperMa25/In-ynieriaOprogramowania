@@ -1,25 +1,7 @@
-{% extends 'base.html' %} {% block head %}
-<link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/login.css') }}"
-/>
+{% extends 'baseAuth.html' %} {% block head %}
 {% endblock %} {% block body %}
-<div class="container">
-    <div class="left-panel">
-        <div class="header">
-            <img class="logo" src="../static/css/Logo.svg" />
-        </div>
-        <form class="login-section" method="post">
-            <h2>Baza została już zainicjowana</h2>
-            <a href="{{ url_for('auth.login') }}">Wróć do logowania</a>
-        </form>
-        {% for message in get_flashed_messages()%}
-        <div class="flash">{{ message }}</div>
-        {% endfor %}
-        <div class="footer">
-            <p>Kacpry Inc.</p>
-        </div>
-    </div>
-    <div class="right-panel"></div>
-</div>
+<form class="login-section" method="post">
+    <h2>Baza została już zainicjowana</h2>
+    <a href="{{ url_for('auth.login') }}">Wróć do logowania</a>
+</form>
 {% endblock %}

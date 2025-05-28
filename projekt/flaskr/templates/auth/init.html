@@ -1,43 +1,25 @@
-{% extends 'base.html' %} {% block head %}
-<link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/login.css') }}"
-/>
+{% extends 'baseAuth.html' %} {% block head %}
 {% endblock %} {% block body %}
-<div class="container">
-    <div class="left-panel">
-        <div class="header">
-            <img class="logo" src="../static/css/Logo.svg" />
-        </div>
-        <form class="login-section" method="post">
-            <h2>Zainicjuj baze danych</h2>
-            <p>Podaj dane</p>
-            <div class="form-group">
-                <label for="login">Login</label>
-                <input type="text" id="login" name="login" required />
-            </div>
-            <div class="form-group">
-                <label for="password">Hasło</label>
-                <input type="password" id="password" name="password" required />
-            </div>
-            <div class="form-group">
-                <label for="firstName">Imię</label>
-                <input type="text" id="firstName" name="firstName" required />
-            </div>
-            <div class="form-group">
-                <label for="lastName">Nazwisko</label>
-                <input type="text" id="lastName" name="lastName" required />
-            </div>
-            <button class="login-button" type="submit">Rozpocznij</button>
-            <a href="{{ url_for('auth.login') }}">Wróć do logowania</a>
-        </form>
-        {% for message in get_flashed_messages()%}
-        <div class="flash">{{ message }}</div>
-        {% endfor %}
-        <div class="footer">
-            <p>Kacpry Inc.</p>
-        </div>
+<form class="login-section" method="post">
+    <h2>Zainicjuj baze danych</h2>
+    <p>Podaj dane</p>
+    <div class="form-group">
+        <label for="login">Login</label>
+        <input type="text" id="login" name="login" required />
     </div>
-    <div class="right-panel"></div>
-</div>
+    <div class="form-group">
+        <label for="password">Hasło</label>
+        <input type="password" id="password" name="password" required />
+    </div>
+    <div class="form-group">
+        <label for="firstName">Imię</label>
+        <input type="text" id="firstName" name="firstName" required />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Nazwisko</label>
+        <input type="text" id="lastName" name="lastName" required />
+    </div>
+    <button class="login-button" type="submit">Rozpocznij</button>
+    <a href="{{ url_for('auth.login') }}">Wróć do logowania</a>
+</form>
 {% endblock %}

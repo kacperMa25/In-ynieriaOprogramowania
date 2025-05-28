@@ -73,7 +73,7 @@ def login():
         if error is None:
             session.clear()
             session["user_id"] = user["employeeCode"]
-            return redirect(url_for("dashboard.products"))
+            return redirect(url_for("dashboard.index"))
 
         flash(error)
 

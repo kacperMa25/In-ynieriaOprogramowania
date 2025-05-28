@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/login.css') }}"
+        />
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-panel">
+                <div class="header">
+                    <img class="logo" src="../static/css/Logo.svg" />
+                </div>
+                {% block body %}{% endblock %}
+                {% for message in get_flashed_messages()%}
+                <div class="flash">{{ message }}</div>
+                {% endfor %}
+                <div class="footer">
+                    <p>Kacpry Inc.</p>
+                </div>
+            </div>
+            <div class="right-panel"></div>
+        </div>
+    </body>
+</html>
