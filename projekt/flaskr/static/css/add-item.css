@@ -25,7 +25,6 @@
             padding: 0 1rem;
         }
 
-        /* Header */
         header {
             background-color: #7986A9;
             color: white;
@@ -69,13 +68,11 @@
             justify-content: center;
         }
 
-        /* Main content */
         main {
             flex: 1;
             padding: 1.5rem 0;
         }
 
-        /* Tabs */
         .tabs {
             display: flex;
             margin-bottom: 1.5rem;
@@ -121,7 +118,6 @@
             color: #64748B;
         }
 
-        /* Grid layout */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -134,7 +130,6 @@
             }
         }
 
-        /* Card */
         .card {
             background-color: white;
             border-radius: 0.5rem;
@@ -176,7 +171,7 @@
             .form-grid-2 {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .form-grid-3 {
                 grid-template-columns: 1fr 1fr 1fr;
             }
@@ -225,7 +220,6 @@
             outline-offset: 1px;
         }
 
-        /* File upload */
         .file-upload {
             display: flex;
             flex-direction: column;
@@ -249,7 +243,6 @@
             font-size: 0.875rem;
         }
 
-        /* Switch */
         .switch-group {
             display: flex;
             justify-content: space-between;
@@ -302,14 +295,12 @@
             transform: translateX(20px);
         }
 
-        /* Separator */
         .separator {
             height: 1px;
             background-color: #E2E8F0;
             margin: 1.5rem 0;
         }
 
-        /* Button */
         .button-group {
             display: flex;
             justify-content: flex-end;
@@ -357,7 +348,6 @@
             font-size: 0.75rem;
         }
 
-        /* Footer */
         footer {
             background-color: #7986A9;
             color: white;
@@ -379,7 +369,6 @@
             }
         }
 
-        /* Icons */
         .icon {
             width: 1.25rem;
             height: 1.25rem;

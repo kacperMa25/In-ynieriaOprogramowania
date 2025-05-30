@@ -1,16 +1,19 @@
 import os
 
 from flask import Flask, render_template
+from flask.helpers import url_for
+from werkzeug.utils import redirect
+
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY ='dev',
-        DATABASE=os.path.join(app.instance_path, 'warehouse.sqlite'),
+        SECRET_KEY="dev",
+        DATABASE=os.path.join(app.instance_path, "warehouse.sqlite"),
     )
 
     if test_config is None:
-        app.config.from_pyfile('config.py', silent=True)
+        app.config.from_pyfile("config.py", silent=True)
     else:
         app.config.from_mapping(test_config)
 
@@ -19,17 +22,20 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
-    def login():
-        return "Przejdz do podstrony auth/login"
-
     from . import db
+
     db.init_app(app)
 
     from . import auth
+
     app.register_blueprint(auth.bp)
 
     from . import dashboard
+
     app.register_blueprint(dashboard.bp)
+
+    @app.route("/")
+    def login():
+        return redirect(url_for("auth.login"))
 
     return app
