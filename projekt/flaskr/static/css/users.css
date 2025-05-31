@@ -18,6 +18,37 @@
             font-weight: 600;
         }
 
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            background-color: white;
+            border-radius: 0.375rem;
+            overflow: hidden;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-weight: 500;
+            text-decoration: none;
+            color: #1A2036;
+        }
+
+        .tab.active {
+            background-color: #4A5978;
+            color: white;
+        }
+
+        .tab:hover {
+            background-color: #F8FAFC;
+        }
+
+        .tab.active:hover {
+            background-color: #4A5978;
+        }
+
         .container {
             width: 100%;
             max-width: 1200px;
