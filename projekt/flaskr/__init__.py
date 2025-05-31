@@ -33,9 +33,6 @@ def create_app(test_config=None):
     from . import dashboard
 
     app.register_blueprint(dashboard.bp)
-
-    @app.route("/")
-    def login():
-        return redirect(url_for("auth.login"))
+    app.add_url_rule("/", endpoint="index")
 
     return app

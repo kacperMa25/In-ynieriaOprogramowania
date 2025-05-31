@@ -72,9 +72,40 @@ def login():
 
         if error is None:
             session.clear()
-            session["user_id"] = user["employeeCode"]
+            session["userID"] = user["employeeCode"]
             return redirect(url_for("dashboard.index"))
 
         flash(error)
 
     return render_template("auth/login.html")
+
+
+@bp.before_app_request
+def loadLoggedInUser():
+    userID = session.get("userID")
+
+    if userID is None:
+        g.user = None
+    else:
+        g.user = (
+            get_db()
+            .execute("SELECT * FROM employees WHERE employeeCode = ?", (userID,))
+            .fetchone()
+        )
+
+
+@bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("auth.login"))
+
+
+def loginRequired(view):
+    @functools.wraps(view)
+    def wrappedView(**kwargs):
+        if g.user is None:
+            return redirect(url_for("auth.login"))
+
+        return view(**kwargs)
+
+    return wrappedView

@@ -35,7 +35,9 @@
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                     </div>
-                    <button style="background: none; border: none; color: white; cursor: pointer;">
+                    <button style="background: none; border: none; color: white; cursor: pointer;"
+                        onclick="window.location.href='{{ url_for('auth.logout') }}'"
+                    >
                         <svg class="icon" viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="1"></circle>
                             <circle cx="19" cy="12" r="1"></circle>
@@ -55,6 +57,9 @@
 
             {% block content %}{% endblock %}
         </div>
+        {% for message in get_flashed_messages()%}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
     </main>
 
     <footer>

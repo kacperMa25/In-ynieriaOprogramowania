@@ -22,7 +22,7 @@
             <p class="card-description">Wprowadź podstawowe informacje o przedmiocie</p>
         </div>
         <div class="card-content">
-            <form method="POST" action="{{ url_for('dashboard.add_item') }}">
+            <form id="itemForm" method="POST">
                 {{ form.csrf_token if form }}
                 <div class="form-group">
                     <div class="form-grid form-grid-2">
@@ -100,6 +100,12 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="price">Cena zakupu (PLN)</label>
+                    <input class="form-input" id="price" name="price" type="number" step="0.01" placeholder="0.00">
+                </div>
+
             </form>
         </div>
     </div>
@@ -146,11 +152,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="price">Cena zakupu (PLN)</label>
-                    <input class="form-input" id="price" name="price" type="number" step="0.01" placeholder="0.00">
-                </div>
-
-                <div class="form-group">
                     <label class="form-label" for="invoiceNumber">Numer faktury</label>
                     <input class="form-input" id="invoiceNumber" name="invoiceNumber" type="text" placeholder="np. FV/2023/05/123">
                 </div>
@@ -191,6 +192,6 @@
 
 <div class="button-group">
     <a href="{{ url_for('dashboard.products') }}" class="button button-outline">Anuluj</a>
-    <button class="button button-primary">Zapisz przedmiot</button>
+    <button class="button button-primary" type="submit" form="itemForm">Zapisz przedmiot</button>
 </div>
 {% endblock %}

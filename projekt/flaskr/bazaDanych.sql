@@ -14,13 +14,9 @@ CREATE TABLE employees (
 );
 
 CREATE TABLE products (
-    productCode INTEGER PRIMARY KEY AUTOINCREMENT,
+    productCode TEXT PRIMARY KEY,
     productName TEXT NOT NULL,
-    productLine TEXT NOT NULL,
-    productScale TEXT NOT NULL,
-    productVendor TEXT NOT NULL,
     productDescription TEXT NOT NULL,
     quantityInStock INTEGER NOT NULL,
-    buyPrice DECIMAL(10, 2) NOT NULL,
-    MSRP DECIMAL(10, 2) NOT NULL
+    price DECIMAL(10, 2) NOT NULL
 );
