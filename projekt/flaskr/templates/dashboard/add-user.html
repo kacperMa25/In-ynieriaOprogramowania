@@ -31,7 +31,7 @@
             <p class="card-description">Wprowadź podstawowe informacje o użytkowniku</p>
         </div>
         <div class="card-content">
-            <form method="POST" action="{{ url_for('dashboard.add_user') }}">
+            <form id="formID" method="POST">
                 {{ form.csrf_token if form }}
                 <div class="form-group">
                     <div class="form-grid form-grid-2">
@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-input" id="email" name="email" type="email" placeholder="jan.kowalski@firma.pl">
+                    <label class="form-label" for="login">Email</label>
+                    <input class="form-input" id="login" name="login" type="login" placeholder="jan.kowalski@firma.pl">
                 </div>
 
                 <div class="form-group">
@@ -56,10 +56,6 @@
                         <div>
                             <label class="form-label" for="password">Hasło</label>
                             <input class="form-input" id="password" name="password" type="password">
-                        </div>
-                        <div>
-                            <label class="form-label" for="confirmPassword">Potwierdź hasło</label>
-                            <input class="form-input" id="confirmPassword" name="confirmPassword" type="password">
                         </div>
                     </div>
                 </div>
@@ -152,6 +148,6 @@
 <!-- Action Buttons -->
 <div class="button-group">
     <a href="{{ url_for('dashboard.users') }}" class="button button-outline">Anuluj</a>
-    <button class="button button-primary">Zapisz użytkownika</button>
+    <button class="button button-primary" type="submit" form="formID">Zapisz użytkownika</button>
 </div>
 {% endblock %}
