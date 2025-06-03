@@ -153,7 +153,18 @@ def add_item():
     return render_template("dashboard/add-item.html")
 
 
+# Do dokończenia
 @bp.route("/products/edit", methods=("GET", "POST"))
 @loginRequired
 def editItem():
+    if request.method == "POST":
+        productName = request.form["itemName"]
+        productCode = request.form["sku"]
+        productDesc = request.form["description"]
+        category = request.form["category"]
+        unit = request.form["unit"]
+        location = request.form["location"]
+        quantity = request.form["quantity"]
+        minQuantStock = request.form["minStock"]
+        price = request.form["price"]
     return render_template("dashboard/edit-item.html")

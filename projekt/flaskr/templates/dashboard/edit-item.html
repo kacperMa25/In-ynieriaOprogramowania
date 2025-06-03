@@ -54,78 +54,65 @@
         </div>
         <div class="card-content">
             <form method="POST">
-                {{ form.csrf_token if form }}
                 <div class="form-group">
                     <div class="form-grid form-grid-2">
-                        <div>
-                            <label class="form-label" for="itemName">Nazwa przedmiotu</label>
-                            <input class="form-input" id="itemName" name="itemName" type="text" value="Wkrętarka akumulatorowa DeWalt DCD777">
-                        </div>
                         <div>
                             <label class="form-label" for="sku">Kod produktu / SKU</label>
-                            <input class="form-input" id="sku" name="sku" type="text" value="WKR-2023-001" disabled>
+                            <input class="form-input" id="sku" name="sku" type="text" placeholder="WKR-2023-001">
+                        </div>
+                        <div>
+                            <label class="form-label" for="itemName">Nazwa przedmiotu</label>
+                            <input class="form-input" id="itemName" name="itemName" type="text" placeholder="Wkrętarka akumulatorowa DeWalt DCD777">
                         </div>
                     </div>
                 </div>
+                <div id="hidden-fields" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label" for="description">Opis</label>
+                        <textarea class="form-textarea" id="description" name="description"></textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="description">Opis</label>
-                    <textarea class="form-textarea" id="description" name="description">Wkrętarka akumulatorowa DeWalt DCD777 18V XR Brushless, kompaktowa, lekka, z bezszczotkowym silnikiem. W zestawie 2 akumulatory 2.0Ah, ładowarka i walizka.</textarea>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-grid form-grid-3">
-                        <div>
-                            <label class="form-label" for="category">Kategoria</label>
-                            <select class="form-select" id="category" name="category">
-                                <option value="tools" selected>Narzędzia</option>
-                                <option value="electronics">Elektronika</option>
-                                <option value="office">Artykuły biurowe</option>
-                                <option value="furniture">Meble</option>
-                                <option value="other">Inne</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="form-label" for="quantity">Ilość</label>
-                            <input class="form-input" id="quantity" name="quantity" type="number" value="24" min="0">
-                        </div>
-                        <div>
-                            <label class="form-label" for="unit">Jednostka miary</label>
-                            <select class="form-select" id="unit" name="unit">
-                                <option value="pcs" selected>Sztuki</option>
-                                <option value="kg">Kilogramy</option>
-                                <option value="l">Litry</option>
-                                <option value="m">Metry</option>
-                                <option value="set">Zestawy</option>
-                            </select>
+                    <div class="form-group">
+                        <div class="form-grid form-grid-3">
+                            <div>
+                                <label class="form-label" for="category">Kategoria</label>
+                                <select class="form-select" id="category" name="category">
+                                    <option value="tools" selected>Narzędzia</option>
+                                    <option value="electronics">Elektronika</option>
+                                    <option value="office">Artykuły biurowe</option>
+                                    <option value="furniture">Meble</option>
+                                    <option value="other">Inne</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="quantity">Ilość</label>
+                                <input class="form-input" id="quantity" name="quantity" type="number" min="0">
+                            </div>
+                            <div>
+                                <label class="form-label" for="unit">Jednostka miary</label>
+                                <select class="form-select" id="unit" name="unit">
+                                    <option value="pcs" selected>Sztuki</option>
+                                    <option value="kg">Kilogramy</option>
+                                    <option value="l">Litry</option>
+                                    <option value="m">Metry</option>
+                                    <option value="set">Zestawy</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="separator"></div>
+                    <div class="separator"></div>
 
-                <div class="form-group">
-                    <div class="form-grid form-grid-2">
-                        <div>
-                            <label class="form-label" for="location">Lokalizacja w magazynie</label>
-                            <input class="form-input" id="location" name="location" type="text" value="Regał A, Półka 3">
-                        </div>
-                        <div>
-                            <label class="form-label" for="barcode">Kod kreskowy</label>
-                            <input class="form-input" id="barcode" name="barcode" type="text" value="5901234123457">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-grid form-grid-2">
-                        <div>
-                            <label class="form-label" for="minStock">Minimalny stan magazynowy</label>
-                            <input class="form-input" id="minStock" name="minStock" type="number" value="5" min="0">
-                        </div>
-                        <div>
-                            <label class="form-label" for="reorderPoint">Punkt ponownego zamówienia</label>
-                            <input class="form-input" id="reorderPoint" name="reorderPoint" type="number" value="10" min="0">
+                    <div class="form-group">
+                        <div class="form-grid form-grid-2">
+                            <div>
+                                <label class="form-label" for="location">Lokalizacja w magazynie</label>
+                                <input class="form-input" id="location" name="location" type="text">
+                            </div>
+                            <div>
+                                <label class="form-label" for="minStock">Minimalny stan magazynowy</label>
+                                <input class="form-input" id="minStock" name="minStock" type="number" min="0">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -280,4 +267,5 @@
     <a href="{{ url_for('dashboard.products') }}" class="button button-outline">Anuluj</a>
     <button class="button button-primary">Zapisz zmiany</button>
 </div>
+<script src="{{ url_for('static', filename='js/check_item.js') }}"></script>
 {% endblock %}
