@@ -10,7 +10,7 @@ def create_app(test_config=None):
     Funkcja odpalana jest automatycznie przy komendzie run,
     określa w którym miejscu powstanie plik binarny bazy danych,
     gdzie znajdują się testy do przeprowadzenia,
-    oraz rejestruje wszystkie blueprinty
+    oraz rejestruje wszystkie blueprinty i w tym widoki
     """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(

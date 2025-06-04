@@ -6,6 +6,10 @@ bp = Blueprint("api", __name__, url_prefix="/api")
 
 @bp.route("/check-product", methods=["POST"])
 def check_product():
+    """
+    Funkcja sprawdza czy nazwa z pola product_name lub sku
+    pasuje do jakiegokolwiek wiersza w tabeli products
+    """
     productName = request.json.get("product_name", "")
     productSku = request.json.get("sku", "")
     db = get_db()

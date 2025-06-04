@@ -17,6 +17,9 @@ bp = Blueprint("dashboard", __name__, url_prefix="/")
 @bp.route("/")
 @loginRequired
 def index():
+    """
+    Główna strona dashboardu, wyświetla na ekranie pare informacji
+    """
     db = get_db()
     wDetails = db.execute(
         "SELECT COUNT(productCode) as howMany, SUM(quantityInStock * price) as howMuch, SUM(quantityInStock < minimalQuantity) as lowStock FROM products"
@@ -27,6 +30,10 @@ def index():
 @bp.route("/users")
 @loginRequired
 def users():
+    """
+    Podstrona, panel zarządzania użytkownikami, wyświetla ile
+    jest w bazie danych użytkowników
+    """
     db = get_db()
     wDetails = db.execute(
         "SELECT COUNT(employeeCode) as howMany FROM employees"
