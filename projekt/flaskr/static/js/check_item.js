@@ -1,3 +1,5 @@
+// fukcja reazlizująca ukrywanie/pokazywanie reszty formularza po wykryciu nazwy
+// badź kodu, która jest zgodna z pozycją w bazie danych
 document.addEventListener('DOMContentLoaded', function() {
   const hiddenFields = document.getElementById('hidden-fields');
   const productInput = document.getElementById('itemName');
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const unitInput = document.getElementById('unit');
   const locationInput = document.getElementById('location');
   const minStockInput = document.getElementById('minStock');
+  const price = document.getElementById('price');
 
   let debounceTimer;
 
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (unitInput) unitInput.value = product.unit || '';
           if (locationInput) locationInput.value = product.location || '';
           if (minStockInput) minStockInput.value = product.minimalQuantity || '';
+          if (price) price.value = product.price || '';
 
         } else {
           hiddenFields.style.display = 'none';
@@ -57,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (unitInput) unitInput.value = '';
           if (locationInput) locationInput.value = '';
           if (minStockInput) minStockInput.value = '';
+          if (price) price.value = '';
         }
       })
       .catch(error => {

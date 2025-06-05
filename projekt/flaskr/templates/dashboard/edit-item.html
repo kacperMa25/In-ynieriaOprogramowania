@@ -53,7 +53,7 @@
             <p class="card-description">Zaktualizuj podstawowe informacje o przedmiocie</p>
         </div>
         <div class="card-content">
-            <form method="POST">
+            <form method="POST" id="formID">
                 <div class="form-group">
                     <div class="form-grid form-grid-2">
                         <div>
@@ -114,6 +114,11 @@
                                 <input class="form-input" id="minStock" name="minStock" type="number" min="0">
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="price">Cena</label>
+                        <input class="form-input" id="price" name="price" type="number" min="0">
                     </div>
                 </div>
             </form>
@@ -265,7 +270,7 @@
 
 <div class="button-group">
     <a href="{{ url_for('dashboard.products') }}" class="button button-outline">Anuluj</a>
-    <button class="button button-primary">Zapisz zmiany</button>
+    <button class="button button-primary" form="formID" type="submit">Zapisz zmiany</button>
 </div>
 <script src="{{ url_for('static', filename='js/check_item.js') }}"></script>
 {% endblock %}

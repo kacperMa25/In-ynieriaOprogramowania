@@ -44,6 +44,9 @@ def users():
 @bp.route("/users/add", methods=("GET", "POST"))
 @loginRequired
 def add_user():
+    """
+    Przetwarzanie formularza z danymi nowego użytkownika, którego mamy na celu dodać.
+    """
     if request.method == "POST":
         db = get_db()
         firstName = request.form["firstName"]
@@ -91,6 +94,9 @@ def products():
 @bp.route("/products/add", methods=("GET", "POST"))
 @loginRequired
 def add_item():
+    """
+    Przetwarzanie danych wprowadzonych w formluarzu dodawania przedmiotu do bazy danych
+    """
     if request.method == "POST":
         db = get_db()
         error = None
@@ -164,14 +170,72 @@ def add_item():
 @bp.route("/products/edit", methods=("GET", "POST"))
 @loginRequired
 def editItem():
+    """
+    Edytowanie już istniejącego przedmiotu
+    """
     if request.method == "POST":
-        productName = request.form["itemName"]
-        productCode = request.form["sku"]
-        productDesc = request.form["description"]
-        category = request.form["category"]
-        unit = request.form["unit"]
-        location = request.form["location"]
-        quantity = request.form["quantity"]
-        minQuantStock = request.form["minStock"]
-        price = request.form["price"]
+        db = get_db()
+        error = None
+        itemName = request.form["itemName"]
+        itemCode = request.form["sku"]
+        itemDesc = request.form["description"]
+        itemCategory = request.form.get("category", "")
+        itemUnit = request.form.get("unit", "")
+        itemLocation = request.form["location"]
+        itemMinQuant = request.form["minStock"]
+        itemQuantity = request.form["quantity"]
+        itemPrice = request.form["price"]
+
+        if not itemName or itemName.strip() == "":
+            error = "Nazwa wymagana"
+        elif not itemCode or itemCode.strip() == "":
+            error = "Kod wymagany"
+        elif not itemDesc or itemDesc.strip() == "":
+            error = "Opis wymagany"
+        elif not itemQuantity:
+            error = "Ilość wymagana"
+        elif not itemPrice:
+            error = "Cena wymagana"
+        elif not itemCategory:
+            error = "Kategoria wymagana"
+        elif not itemUnit:
+            error = "Jednostka wymagana"
+        elif not itemLocation:
+            error = "Lokalizacja wymagana"
+        elif not itemMinQuant:
+            error = "Minimala ilość wymagana"
+        else:
+            try:
+                quantity = int(itemQuantity)
+                price = float(itemPrice)
+                minStock = int(itemMinQuant)
+                if quantity or minStock <= 0:
+                    error = "Ilość musi być większa niż 0"
+                elif price <= 0:
+                    error = "Cena musi być większa niż 0"
+            except ValueError:
+                error = "Ilość i cena muszą być liczbami"
+
+            try:
+                db.execute(
+                    "UPDATE products SET productDescription = ?, category = ?, unit = ?, location = ?, quantityInStock = ?, minimalQuantity = ?, price = ? WHERE productCode = ? OR productName = ?",
+                    (
+                        itemDesc,
+                        itemCategory,
+                        itemUnit,
+                        itemLocation,
+                        itemQuantity,
+                        itemMinQuant,
+                        itemPrice,
+                        itemCode,
+                        itemName,
+                    ),
+                )
+                db.commit()
+            except db.IntegrityError as e:
+                error = f"Błąd integralności: {str(e)} - Produkt o kodzie {itemCode}"
+            else:
+                return redirect(url_for("index"))
+
+        flash(error)
     return render_template("dashboard/edit-item.html")
