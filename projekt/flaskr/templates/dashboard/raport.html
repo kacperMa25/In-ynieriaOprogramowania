@@ -4,8 +4,473 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel raportów - System Zarządzania Magazynem</title>
-    
+
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="index.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                        </svg>
+                        <h1>Panel sterowania</h1>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <div class="system-badge">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <rect x="7" y="7" width="3" height="9"></rect>
+                            <rect x="14" y="7" width="3" height="5"></rect>
+                        </svg>
+                        <span>ISZM</span>
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M20 6L9 17l-5-5"></path>
+                        </svg>
+                    </div>
+                    <div class="user-avatar">
+                        <svg class="icon" viewBox="0 0 24 24" style="color: #5D6B8A;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <button style="background: none; border: none; color: white; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="19" cy="12" r="1"></circle>
+                            <circle cx="5" cy="12" r="1"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <svg class="icon-sm" viewBox="0 0 24 24">
+                    <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                </svg>
+                Powrót do głównego dashboard
+            </a>
+
+            <div class="page-title">
+                <h2>Panel raportów</h2>
+            </div>
+
+            <div class="tabs">
+                <a href="products.html" class="tab">Przedmioty</a>
+                <a href="users.html" class="tab">Użytkownicy</a>
+                <a href="reports.html" class="tab active">Raporty</a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Wygenerowane raporty w tym miesiącu</div>
+                    <div class="stat-value">42</div>
+                    <div class="stat-footer">
+                        <span class="stat-trend-up">
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                            12%
+                        </span>
+                        vs poprzedni miesiąc
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Wartość magazynu</div>
+                    <div class="stat-value">458k</div>
+                    <div class="stat-footer">
+                        <span class="stat-trend-up">
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                            8%
+                        </span>
+                        vs poprzedni miesiąc
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Przedmioty poniżej stanu minimalnego</div>
+                    <div class="stat-value">17</div>
+                    <div class="stat-footer">
+                        <span class="stat-trend-down">
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            5%
+                        </span>
+                        vs poprzedni miesiąc
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">Popularne raporty</h3>
+            <div class="report-grid">
+                <div class="report-card">
+                    <div class="report-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 8v13H3V3h13"></path>
+                            <path d="M17 3v5h5"></path>
+                            <path d="M9 17v-8"></path>
+                            <path d="M14 17v-5"></path>
+                            <path d="M4 17v-2"></path>
+                        </svg>
+                    </div>
+                    <div class="report-title">Raport stanu magazynu</div>
+                    <div class="report-description">
+                        Generuje szczegółowy raport aktualnego stanu magazynu z podziałem na kategorie i lokalizacje.
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-meta">Ostatnio wygenerowany: 2 dni temu</div>
+                        <div class="report-action">
+                            Generuj
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 20V10"></path>
+                            <path d="M18 20V4"></path>
+                            <path d="M6 20v-4"></path>
+                            <path d="M2 20h20"></path>
+                        </svg>
+                    </div>
+                    <div class="report-title">Raport ruchu towarów</div>
+                    <div class="report-description">
+                        Pokazuje przepływ towarów w magazynie - przyjęcia, wydania i przesunięcia w wybranym okresie.
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-meta">Ostatnio wygenerowany: 5 dni temu</div>
+                        <div class="report-action">
+                            Generuj
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            <path d="M9 14l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <div class="report-title">Raport inwentaryzacji</div>
+                    <div class="report-description">
+                        Zestawienie wyników inwentaryzacji z porównaniem do stanu systemowego i wykazem różnic.
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-meta">Ostatnio wygenerowany: 2 tyg. temu</div>
+                        <div class="report-action">
+                            Generuj
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M16 8l-8 8"></path>
+                            <path d="M8 8l8 8"></path>
+                        </svg>
+                    </div>
+                    <div class="report-title">Raport braków magazynowych</div>
+                    <div class="report-description">
+                        Lista przedmiotów, których stan jest poniżej minimalnego poziomu lub które wymagają zamówienia.
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-meta">Ostatnio wygenerowany: wczoraj</div>
+                        <div class="report-action">
+                            Generuj
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <div class="report-title">Raport wartości magazynu</div>
+                    <div class="report-description">
+                        Zestawienie wartości magazynu z podziałem na kategorie, dostawców i lokalizacje.
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-meta">Ostatnio wygenerowany: 3 dni temu</div>
+                        <div class="report-action">
+                            Generuj
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div class="report-title">Raport aktywności użytkowników</div>
+                    <div class="report-description">
+                        Zestawienie aktywności użytkowników systemu - logowania, operacje, zmiany w magazynie.
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-meta">Ostatnio wygenerowany: tydzień temu</div>
+                        <div class="report-action">
+                            Generuj
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-report">
+                <h3 class="custom-report-title">Stwórz raport niestandardowy</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="reportType">Typ raportu</label>
+                            <select class="form-select" id="reportType">
+                                <option value="" selected disabled>Wybierz typ raportu</option>
+                                <option value="inventory">Stan magazynu</option>
+                                <option value="movement">Ruch towarów</option>
+                                <option value="stocktaking">Inwentaryzacja</option>
+                                <option value="value">Wartość magazynu</option>
+                                <option value="shortage">Braki magazynowe</option>
+                                <option value="activity">Aktywność użytkowników</option>
+                                <option value="custom">Raport niestandardowy</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reportFormat">Format raportu</label>
+                            <select class="form-select" id="reportFormat">
+                                <option value="pdf" selected>PDF</option>
+                                <option value="excel">Excel</option>
+                                <option value="csv">CSV</option>
+                                <option value="html">HTML</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="dateFrom">Data od</label>
+                            <input class="form-input" id="dateFrom" type="date">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="dateTo">Data do</label>
+                            <input class="form-input" id="dateTo" type="date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="category">Kategoria</label>
+                        <select class="form-select" id="category">
+                            <option value="all" selected>Wszystkie kategorie</option>
+                            <option value="tools">Narzędzia</option>
+                            <option value="electronics">Elektronika</option>
+                            <option value="office">Artykuły biurowe</option>
+                            <option value="furniture">Meble</option>
+                            <option value="other">Inne</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Dodatkowe opcje</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeImages">
+                                <label class="checkbox-label" for="includeImages">Dołącz zdjęcia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeCharts" checked>
+                                <label class="checkbox-label" for="includeCharts">Dołącz wykresy</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeSummary" checked>
+                                <label class="checkbox-label" for="includeSummary">Dołącz podsumowanie</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeHistory">
+                                <label class="checkbox-label" for="includeHistory">Dołącz historię zmian</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="button button-outline">Wyczyść</button>
+                        <button type="button" class="button button-primary">
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Generuj raport
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="recent-reports">
+                <h3 class="recent-reports-title">Ostatnio wygenerowane raporty</h3>
+                <div style="overflow-x: auto;">
+                    <table class="reports-table">
+                        <thead>
+                            <tr>
+                                <th>Nazwa raportu</th>
+                                <th>Typ</th>
+                                <th>Data wygenerowania</th>
+                                <th>Wygenerował</th>
+                                <th>Status</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Raport stanu magazynu - Maj 2023</td>
+                                <td>Stan magazynu</td>
+                                <td>15.05.2023, 14:32</td>
+                                <td>Jan Kowalski</td>
+                                <td><span class="report-status status-completed">Ukończony</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="report-action-btn" title="Pobierz">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="report-action-btn" title="Udostępnij">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <circle cx="18" cy="5" r="3"></circle>
+                                                <circle cx="6" cy="12" r="3"></circle>
+                                                <circle cx="18" cy="19" r="3"></circle>
+                                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Raport braków magazynowych</td>
+                                <td>Braki magazynowe</td>
+                                <td>14.05.2023, 09:15</td>
+                                <td>Anna Nowak</td>
+                                <td><span class="report-status status-completed">Ukończony</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="report-action-btn" title="Pobierz">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="report-action-btn" title="Udostępnij">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <circle cx="18" cy="5" r="3"></circle>
+                                                <circle cx="6" cy="12" r="3"></circle>
+                                                <circle cx="18" cy="19" r="3"></circle>
+                                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Raport wartości magazynu - Q1 2023</td>
+                                <td>Wartość magazynu</td>
+                                <td>12.05.2023, 16:45</td>
+                                <td>Piotr Wiśniewski</td>
+                                <td><span class="report-status status-processing">Przetwarzanie</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="report-action-btn" title="Anuluj" style="color: #EF4444;">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Raport aktywności użytkowników - Kwiecień 2023</td>
+                                <td>Aktywność użytkowników</td>
+                                <td>08.05.2023, 11:20</td>
+                                <td>Katarzyna Zielińska</td>
+                                <td><span class="report-status status-completed">Ukończony</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="report-action-btn" title="Pobierz">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="report-action-btn" title="Udostępnij">
+                                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                                <circle cx="18" cy="5" r="3"></circle>
+                                                <circle cx="6" cy="12" r="3"></circle>
+                                                <circle cx="18" cy="19" r="3"></circle>
+                                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>Pomoc techniczna: 792 292 975</div>
+                <div>Kacpry Inc.</div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
