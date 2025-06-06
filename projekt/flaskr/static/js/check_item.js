@@ -1,7 +1,8 @@
 // fukcja reazlizująca ukrywanie/pokazywanie reszty formularza po wykryciu nazwy
 // badź kodu, która jest zgodna z pozycją w bazie danych
 document.addEventListener('DOMContentLoaded', function() {
-  const hiddenFields = document.getElementById('hidden-fields');
+  const hiddenFields1 = document.getElementById('hidden-fields1');
+  const hiddenFields2 = document.getElementById('hidden-fields2');
   const productInput = document.getElementById('itemName');
   const skuInput = document.getElementById('sku');
   const descInput = document.getElementById('description');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const locationInput = document.getElementById('location');
   const minStockInput = document.getElementById('minStock');
   const price = document.getElementById('price');
+  const span = document.getElementById('idSpan')
 
   let debounceTimer;
 
@@ -18,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     clearTimeout(debounceTimer);
 
     if (!searchValue) {
-      hiddenFields.style.display = 'none';
+      hiddenFields1.style.display = 'none';
+      hiddenFields2.style.display = 'none';
       return;
     }
 
@@ -37,9 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         if (data.exists) {
-          hiddenFields.style.display = 'block';
+          hiddenFields1.style.display = 'block';
+          hiddenFields2.style.display = 'block';
 
           const product = data.product;
+          span.textContent = product.productCode || '';
 
           if (searchType !== 'name' && productInput) productInput.value = product.productName || '';
           if (searchType !== 'sku' && skuInput) skuInput.value = product.productCode || '';
@@ -53,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (price) price.value = product.price || '';
 
         } else {
-          hiddenFields.style.display = 'none';
+          hiddenFields1.style.display = 'none';
 
           if (descInput) descInput.value = '';
           if (categoryInput) categoryInput.value = '';
@@ -62,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (locationInput) locationInput.value = '';
           if (minStockInput) minStockInput.value = '';
           if (price) price.value = '';
+          span.value = '';
         }
       })
       .catch(error => {
@@ -69,10 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, 300);
   }
-
-  productInput.addEventListener('input', function() {
-    checkProduct('name', this.value.trim());
-  });
 
   skuInput.addEventListener('input', function() {
     checkProduct('sku', this.value.trim());

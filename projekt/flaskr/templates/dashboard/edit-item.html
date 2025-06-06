@@ -21,8 +21,8 @@
         <div>
             <h2>
                 Edytuj przedmiot
-                <span class="badge badge-primary">ID: WKR-2023-001</span>
             </h2>
+                <span class="badge badge-primary" id="idSpan"></span>
             <p>Zaktualizuj informacje o przedmiocie w systemie zarządzania magazynem</p>
         </div>
         <div style="display: flex; gap: 0.75rem;">
@@ -60,13 +60,13 @@
                             <label class="form-label" for="sku">Kod produktu / SKU</label>
                             <input class="form-input" id="sku" name="sku" type="text" placeholder="WKR-2023-001">
                         </div>
-                        <div>
+                        <div id="hidden-fields1" style="display: none;">
                             <label class="form-label" for="itemName">Nazwa przedmiotu</label>
                             <input class="form-input" id="itemName" name="itemName" type="text" placeholder="Wkrętarka akumulatorowa DeWalt DCD777">
                         </div>
                     </div>
                 </div>
-                <div id="hidden-fields" style="display: none;">
+                <div id="hidden-fields2" style="display: none;">
                     <div class="form-group">
                         <label class="form-label" for="description">Opis</label>
                         <textarea class="form-textarea" id="description" name="description"></textarea>
@@ -270,7 +270,8 @@
 
 <div class="button-group">
     <a href="{{ url_for('dashboard.products') }}" class="button button-outline">Anuluj</a>
-    <button class="button button-primary" form="formID" type="submit">Zapisz zmiany</button>
+    <button class="button button-primary" form="formID" type="submit" name="action" value="save">Zapisz zmiany</button>
+    <button class="button button-danger" form="formID" type="submit" name="action" value="delete" onclick="return confirm('Czy na pewno chcesz usunąć ten przedmiot? Tej operacji nie można cofnąć.')">Usuń przedmiot</button>
 </div>
 <script src="{{ url_for('static', filename='js/check_item.js') }}"></script>
 {% endblock %}

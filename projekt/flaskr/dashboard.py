@@ -1,3 +1,4 @@
+from sqlite3 import IntegrityError
 from flaskr.auth import loginRequired
 from flaskr.db import get_db
 from flask import (
@@ -166,18 +167,30 @@ def add_item():
     return render_template("dashboard/add-item.html")
 
 
-# Do dokończenia
 @bp.route("/products/edit", methods=("GET", "POST"))
 @loginRequired
 def editItem():
     """
-    Edytowanie już istniejącego przedmiotu
+    Edytowanie, bądź usunięcie już istniejącego przedmiotu
     """
     if request.method == "POST":
+        action = request.form.get("action", "save")
         db = get_db()
         error = None
-        itemName = request.form["itemName"]
         itemCode = request.form["sku"]
+
+        if action == "delete":
+            try:
+                db.execute("DELETE FROM products WHERE productCode = ?", (itemCode,))
+                db.commit()
+                flash("Przedmiot został usunięty pomyślnie")
+                return redirect(url_for("dashboard.products"))
+            except db.IntegrityError as e:
+                error = f"Wystąpił błąd podczas usuwania {e}"
+                flash(error)
+                return redirect(url_for("dashboard.products"))
+
+        itemName = request.form["itemName"]
         itemDesc = request.form["description"]
         itemCategory = request.form.get("category", "")
         itemUnit = request.form.get("unit", "")
@@ -239,3 +252,50 @@ def editItem():
 
         flash(error)
     return render_template("dashboard/edit-item.html")
+
+@bp.route("/raport", methods=["GET"])
+@loginRequired
+def raport():
+    """Funkcja weryfikuje czy podane kryteria generowania raportu są prawidłowe,
+    przepytuje baze danych, a następnie przesyła informacje do template'u gdzie są one
+    wyświetlane."""
+    db = get_db()
+    category = request.args.get("category", "").lower()
+    sortBy = request.args.get("sortBy", "").lower()
+    error = None
+    wDetails = None
+    descAsc = "DESC"
+
+    if category or sortBy:
+        if sortBy:
+            match sortBy:
+                case "nazwa":
+                    sortBy = "productName"
+                    descAsc = "ASC"
+                case "ilość":
+                    sortBy = "quantityInStock"
+                case "wartość":
+                    sortBy = "price"
+                case _:
+                    sortBy = "productName"
+                    descAsc = "ASC"
+        else:
+            sortBy = "productName"
+
+        try:
+            if not category or category == "wszystkie kategorie":
+                wDetails = db.execute(
+                    f"SELECT productCode, productName, category, quantityInStock, price, location, price * quantityInStock AS valueWhole FROM products ORDER BY {sortBy} {descAsc}"
+                ).fetchall()
+            else:
+                wDetails = db.execute(
+                    f"SELECT productCode, productName, category, quantityInStock, price, location, price * quantityInStock AS valueWhole FROM products WHERE category = ? ORDER BY {sortBy} {descAsc}",
+                    (category,)
+                ).fetchall()
+        except db.IntegrityError as e:
+            error = f"Naruszono integralność z bazą danych: {str(e)}"
+            flash(error)
+
+    categories = db.execute("SELECT DISTINCT category FROM products").fetchall()
+
+    return render_template("dashboard/raport.html", wDetails=wDetails, categories=categories)

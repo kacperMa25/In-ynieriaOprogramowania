@@ -75,6 +75,17 @@
             padding: 1.5rem 0;
         }
 
+        .button-danger {
+            background-color: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .button-danger:hover {
+            background-color: #dc2626;
+            border-color: #dc2626;
+        }
+
         /* Tabs */
         .tabs {
             display: flex;
@@ -254,7 +265,7 @@
             .form-grid-2 {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .form-grid-3 {
                 grid-template-columns: 1fr 1fr 1fr;
             }
