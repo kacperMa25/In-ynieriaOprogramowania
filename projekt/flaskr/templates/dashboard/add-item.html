@@ -7,6 +7,15 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/add-item.css') }}">
 {% endblock %}
 
+{% block back_button %}
+<div class="tabs">
+    <a href="{{ url_for('dashboard.index') }}" class="tab">Dashboard</a>
+    <a href="{{ url_for('dashboard.products') }}" class="tab active">Przedmioty</a>
+    <a href="{{ url_for('dashboard.users') }}" class="tab">Użytkownicy</a>
+    <a href="{{ url_for('dashboard.raport') }}" class="tab">Raporty</a>
+</div>
+{% endblock %}
+
 {% block page_title %}
 <div class="page-title">
     <h2>Dodaj przedmiot</h2>

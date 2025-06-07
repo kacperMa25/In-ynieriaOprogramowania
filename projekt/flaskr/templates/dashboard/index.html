@@ -6,14 +6,16 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock %}
 
-{% block page_title %}
+{% block back_button %}
 <div class="tabs">
     <a href="{{ url_for('dashboard.index') }}" class="tab active">Dashboard</a>
     <a href="{{ url_for('dashboard.products') }}" class="tab">Przedmioty</a>
     <a href="{{ url_for('dashboard.users') }}" class="tab">Użytkownicy</a>
     <a href="{{ url_for('dashboard.raport') }}" class="tab">Raporty</a>
 </div>
+{% endblock %}
 
+{% block page_title %}
 <div class="page-title">
     <h2>Dashboard</h2>
     <p>Przegląd stanu magazynu i aktywności systemu</p>

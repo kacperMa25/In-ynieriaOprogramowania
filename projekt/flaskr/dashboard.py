@@ -76,6 +76,7 @@ def add_user():
             except db.IntegrityError as e:
                 error = f"{e}"
             else:
+                flash("Pomyślnie dodano użytkownika")
                 return redirect(url_for("index"))
 
         flash(error)
@@ -160,6 +161,7 @@ def add_item():
             except db.IntegrityError as e:
                 error = f"Błąd integralności: {str(e)} - Produkt o kodzie {itemCode}"
             else:
+                flash("Dodano pomyślnie przedmiot")
                 return redirect(url_for("index"))
 
         flash(error)
@@ -248,10 +250,12 @@ def editItem():
             except db.IntegrityError as e:
                 error = f"Błąd integralności: {str(e)} - Produkt o kodzie {itemCode}"
             else:
+                flash("Edytowano pomyślnie przedmiot")
                 return redirect(url_for("index"))
 
         flash(error)
     return render_template("dashboard/edit-item.html")
+
 
 @bp.route("/raport", methods=["GET"])
 @loginRequired
@@ -290,7 +294,7 @@ def raport():
             else:
                 wDetails = db.execute(
                     f"SELECT productCode, productName, category, quantityInStock, price, location, price * quantityInStock AS valueWhole FROM products WHERE category = ? ORDER BY {sortBy} {descAsc}",
-                    (category,)
+                    (category,),
                 ).fetchall()
         except db.IntegrityError as e:
             error = f"Naruszono integralność z bazą danych: {str(e)}"
@@ -298,4 +302,37 @@ def raport():
 
     categories = db.execute("SELECT DISTINCT category FROM products").fetchall()
 
-    return render_template("dashboard/raport.html", wDetails=wDetails, categories=categories)
+    return render_template(
+        "dashboard/raport.html", wDetails=wDetails, categories=categories
+    )
+
+
+@bp.route("/products/modifyQuantity", methods=("GET", "POST"))
+@loginRequired
+def modQuant():
+    if request.method == "POST":
+        db = get_db()
+        productCode = request.form["sku"]
+        quantity = request.form["quantity"]
+        error = None
+
+        if not productCode:
+            error = "Wprowadź kod produktu"
+        elif not quantity:
+            error = "Wprowadź ilość"
+
+        if error is None:
+            try:
+                db.execute(
+                    "UPDATE products SET quantityInStock = quantityInStock + ? WHERE productCode = ?",
+                    (quantity, productCode),
+                )
+                db.commit()
+            except db.IntegrityError as e:
+                error = f"Naruszono integralność: {e}"
+            else:
+                flash("Zaktualizowano ilość")
+                return redirect(url_for("dashboard.products"))
+
+        flash(error)
+    return render_template("dashboard/modQuant.html")

@@ -1,0 +1,130 @@
+{% extends "baseDash.html" %}
+
+{% block title %}Przyjęcie dostawy - System Zarządzania Magazynem{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/edit-item.css') }}">
+{% endblock %}
+
+{% block back_button %}
+<div class="tabs">
+    <a href="{{ url_for('dashboard.index') }}" class="tab">Dashboard</a>
+    <a href="{{ url_for('dashboard.products') }}" class="tab active">Przedmioty</a>
+    <a href="{{ url_for('dashboard.users') }}" class="tab">Użytkownicy</a>
+    <a href="{{ url_for('dashboard.raport') }}" class="tab">Raporty</a>
+</div>
+{% endblock %}
+
+{% block page_title %}
+<div class="page-title">
+    <div class="page-title-row">
+        <div>
+            <h2>
+                Przyjęcie dostawy
+            </h2>
+            <p>Wprowadź dane produktu oraz ilość przyjmowaną do magazynu</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="grid">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Informacje o dostawie</h3>
+            <p class="card-description">Wprowadź kod produktu i ilość do przyjęcia</p>
+        </div>
+        <div class="card-content">
+            <form method="POST" id="deliveryForm">
+                <div class="form-group">
+                    <label class="form-label" for="sku">Kod produktu / SKU</label>
+                    <input class="form-input" id="sku" name="sku" type="text" placeholder="WKR-2023-001" required>
+                    <div id="product-info" class="form-info" style="display: none;">
+                        <span id="product-name"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="quantity">Ilość przyjmowana</label>
+                    <input class="form-input" id="quantity" name="quantity" type="number" min="1" required>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Podsumowanie</h3>
+            </div>
+            <div class="card-content" id="summary">
+                <div class="summary-item">
+                    <span class="summary-label">Produkt:</span>
+                    <span class="summary-value" id="summary-product">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Kod produktu:</span>
+                    <span class="summary-value" id="summary-sku">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Ilość do przyjęcia:</span>
+                    <span class="summary-value" id="summary-quantity">-</span>
+                </div>
+                <div class="separator"></div>
+                <div class="summary-item">
+                    <span class="summary-label">Aktualny stan magazynowy:</span>
+                    <span class="summary-value" id="current-stock">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Stan po dostawie:</span>
+                    <span class="summary-value" id="future-stock">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="button-group">
+    <a href="{{ url_for('dashboard.products') }}" class="button button-outline">Anuluj</a>
+    <button class="button button-primary" form="deliveryForm" type="submit">Przyjmij dostawę</button>
+</div>
+
+<script>
+document.getElementById('sku').addEventListener('change', function() {
+    const sku = this.value;
+    if (sku) {
+        fetch('/api/check-product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                sku: sku
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                document.getElementById('product-info').style.display = 'block';
+                document.getElementById('product-name').textContent = data.product.productName;
+
+                document.getElementById('summary-product').textContent = data.product.productName;
+                document.getElementById('summary-sku').textContent = data.product.productCode;
+                document.getElementById('current-stock').textContent = data.product.quantityInStock + ' ' + data.product.unit;
+
+                document.getElementById('quantity').addEventListener('input', function() {
+                    const quantity = parseInt(this.value) || 0;
+                    document.getElementById('summary-quantity').textContent = quantity + ' ' + data.product.unit;
+                    const currentStock = parseInt(data.product.quantityInStock);
+                    document.getElementById('future-stock').textContent = (currentStock + quantity) + ' ' + data.product.unit;
+                });
+            } else {
+                document.getElementById('product-info').style.display = 'block';
+                document.getElementById('product-name').textContent = 'Produkt nie został znaleziony';
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
