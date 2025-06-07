@@ -1,4 +1,3 @@
-from sqlite3 import IntegrityError
 from flaskr.auth import loginRequired
 from flaskr.db import get_db
 from flask import (
