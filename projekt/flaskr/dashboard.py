@@ -322,6 +322,15 @@ def modQuant():
 
         if error is None:
             try:
+                quantDB = db.execute(
+                    "SELECT quantityInStock FROM products WHERE productCode = ?",
+                    (productCode,),
+                ).fetchone()
+                if int(quantDB["quantityInStock"]) + int(quantity) < 0:
+                    flash(
+                        "Przedmiot po aktualizacji byłby na stanie ujemnym, spróbuj ponownie"
+                    )
+                    return redirect(url_for("dashboard.products"))
                 db.execute(
                     "UPDATE products SET quantityInStock = quantityInStock + ? WHERE productCode = ?",
                     (quantity, productCode),
