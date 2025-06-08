@@ -82,6 +82,83 @@ def add_user():
     return render_template("dashboard/add-user.html")
 
 
+@bp.route("/users/edit", methods=("POST", "GET"))
+@loginRequired
+def editUser():
+    """
+    Edycja informacji o użytkowniku
+    """
+    if request.method == "POST":
+        action = request.form.get("action", "save")
+        db = get_db()
+        error = None
+        employeeCode = request.form["employeeCode"]
+
+        if action == "delete":
+            try:
+                db.execute(
+                    "DELETE FROM employees WHERE employeeCode = ?", (employeeCode,)
+                )
+                db.commit()
+                flash("Użytkownik został usunięty pomyślnie")
+                return redirect(url_for("dashboard.users"))
+            except db.IntegrityError as e:
+                error = f"Wystąpił błąd podczas usuwania: {e}"
+                flash(error)
+                return redirect(url_for("dashboard.users"))
+
+        firstName = request.form["firstName"]
+        lastName = request.form["lastName"]
+        login = request.form["login"]
+        password = request.form.get("password", "")
+        jobTitle = request.form.get("jobTitle", "")
+        reportsTo = request.form.get("reportsTo", "")
+
+        if not firstName or firstName.strip() == "":
+            error = "Imię jest wymagane"
+        elif not lastName or lastName.strip() == "":
+            error = "Nazwisko jest wymagane"
+        elif not login or login.strip() == "":
+            error = "Login jest wymagany"
+
+        if error is None:
+            try:
+                if password and password.strip() != "":
+                    db.execute(
+                        "UPDATE employees SET firstName = ?, lastName = ?, login = ?, password = ?, jobTitle = ?, reportsTo = ? WHERE employeeCode = ?",
+                        (
+                            firstName,
+                            lastName,
+                            login,
+                            generate_password_hash(password),
+                            jobTitle,
+                            reportsTo or None,
+                            employeeCode,
+                        ),
+                    )
+                else:
+                    db.execute(
+                        "UPDATE employees SET firstName = ?, lastName = ?, login = ?, jobTitle = ?, reportsTo = ? WHERE employeeCode = ?",
+                        (
+                            firstName,
+                            lastName,
+                            login,
+                            jobTitle,
+                            reportsTo or None,
+                            employeeCode,
+                        ),
+                    )
+                db.commit()
+                flash("Użytkownik został zaktualizowany pomyślnie")
+                return redirect(url_for("dashboard.users"))
+            except db.IntegrityError as e:
+                error = f"Błąd integralności bazy danych: {e}"
+
+        flash(error)
+
+    return render_template("dashboard/edit-user.html")
+
+
 @bp.route("/products")
 @loginRequired
 def products():

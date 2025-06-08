@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flaskr.db import get_db
+from flaskr.auth import loginRequired
 
 bp = Blueprint("api", __name__, url_prefix="/api")
 
@@ -28,5 +29,43 @@ def check_product():
     if product:
         productDict = dict(product)
         return jsonify({"exists": True, "product": productDict})
+    else:
+        return jsonify({"exists": False})
+
+
+@bp.route("/check-employee", methods=["POST"])
+@loginRequired
+def check_employee():
+    """
+    Funkcja API sprawdza czy istnieje pracownik o podanym kodzie
+    i zwraca jego dane jeśli istnieje
+    """
+    data = request.get_json()
+    employeeCode = data.get("employee_code")
+
+    if not employeeCode:
+        return jsonify({"error": "No employee code provided"}), 400
+
+    db = get_db()
+
+    employee = db.execute(
+        "SELECT * FROM employees WHERE employeeCode = ?", (employeeCode,)
+    ).fetchone()
+
+    if employee:
+        employeeDict = dict(employee)
+
+        managers = db.execute(
+            "SELECT employeeCode, firstName, lastName FROM employees"
+        ).fetchall()
+        managersList = [dict(manager) for manager in managers]
+
+        return jsonify(
+            {
+                "exists": True,
+                "employee": employeeDict,
+                "managers": managersList,
+            }
+        )
     else:
         return jsonify({"exists": False})
